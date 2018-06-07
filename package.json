@@ -9,7 +9,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "docs:dev": "vuepress dev resources",
-    "docs:build": "vuepress build resources"
+    "docs:build": "vuepress build resources",
+    "deploy": "push-dir --dir=docs --branch=gh-pages"
   },
   "repository": {
     "type": "git",
@@ -22,6 +23,7 @@
   },
   "homepage": "https://github.com/NEM-Apostille/Apostille-library-docs#readme",
   "dependencies": {
+    "push-dir": "^0.4.1",
     "vuepress": "^0.10.0",
     "vuepress-theme-vue": "^1.0.3"
   }
