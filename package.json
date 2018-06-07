@@ -1,0 +1,27 @@
+{
+  "name": "apostille-library-docs",
+  "version": "1.0.0",
+  "description": "official documentation for apostille",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NEM-Apostille/Apostille-library-docs.git"
+  },
+  "author": "@gimyboya",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/NEM-Apostille/Apostille-library-docs/issues"
+  },
+  "homepage": "https://github.com/NEM-Apostille/Apostille-library-docs#readme",
+  "dependencies": {
+    "vuepress": "^0.10.0"
+  }
+}
