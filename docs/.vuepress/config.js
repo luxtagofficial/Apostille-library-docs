@@ -3,51 +3,52 @@ module.exports = {
   locales: {
     '/': {
       lang: 'en-US',
-      title: 'VuePress',
-      description: 'Vue-powered Static Site Generator'
+      title: 'Apostille Library',
+      description: 'A novel & holistic blockchain notarization and timestamping with transferable, updatable, branded, and conjointly owned notarizations.'
     },
-    '/zh/': {
-      lang: 'zh-CN',
-      title: 'VuePress',
-      description: 'Vue 驱动的静态网站生成器'
+    '/fr/': {
+      lang: 'fr',
+      title: 'Apostille Library',
+      description: 'un system holistique de notorisation sure le blockchain'
     }
   },
   head: [
     ['link', { rel: 'icon', href: `/logo.png` }],
     ['link', { rel: 'manifest', href: '/manifest.json' }],
-    ['meta', { name: 'theme-color', content: '#3eaf7c' }],
+    ['meta', { name: 'theme-color', content: '#34AADE' }],
     ['meta', { name: 'apple-mobile-web-app-capable', content: 'yes' }],
     ['meta', { name: 'apple-mobile-web-app-status-bar-style', content: 'black' }],
     ['link', { rel: 'apple-touch-icon', href: `/icons/apple-touch-icon-152x152.png` }],
-    ['link', { rel: 'mask-icon', href: '/icons/safari-pinned-tab.svg', color: '#3eaf7c' }],
+    ['link', { rel: 'mask-icon', href: '/icons/safari-pinned-tab.svg', color: '#34AADE' }],
     ['meta', { name: 'msapplication-TileImage', content: '/icons/msapplication-icon-144x144.png' }],
     ['meta', { name: 'msapplication-TileColor', content: '#000000' }]
   ],
   serviceWorker: true,
   theme: 'vue',
   themeConfig: {
-    repo: 'vuejs/vuepress',
+    repo: 'NEM-Apostille/Apostille-library',
+    docsRepo: 'NEM-Apostille/Apostille-library-docs',
     editLinks: true,
     docsDir: 'docs',
     locales: {
       '/': {
         label: 'English',
         selectText: 'Languages',
-        editLinkText: 'Edit this page on GitHub',
+        editLinkText: 'Help us improve this page!',
         lastUpdated: 'Last Updated',
         nav: [
           {
-            text: 'Guide',
+            text: 'Learn',
             link: '/guide/',
           },
-          {
-            text: 'Config Reference',
-            link: '/config/'
-          },
-          {
-            text: 'Default Theme Config',
-            link: '/default-theme-config/'
-          }
+          // {
+          //   text: 'Config Reference',
+          //   link: '/config/'
+          // },
+          // {
+          //   text: 'Default Theme Config',
+          //   link: '/default-theme-config/'
+          // }
         ],
         sidebar: {
           '/guide/': genSidebarConfig('Guide')
