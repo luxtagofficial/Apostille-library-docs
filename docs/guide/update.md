@@ -1,4 +1,4 @@
-# Deploying
+# Updating a notorized assets
 
 The following guides are based on a few shared assumptions:
 

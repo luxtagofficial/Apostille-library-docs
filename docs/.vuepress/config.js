@@ -89,13 +89,14 @@ function genSidebarConfig (title) {
       children: [
         '',
         'getting-started',
-        'basic-config',
-        'assets',
-        'markdown',
-        'using-vue',
-        'custom-themes',
-        'i18n',
-        'deploy'
+        'digital-assets',
+        'real-assets',
+        'update',
+        'ownership',
+        'transfer',
+        'auditing',
+        'examples',
+        'advanced'
       ]
     }
   ]

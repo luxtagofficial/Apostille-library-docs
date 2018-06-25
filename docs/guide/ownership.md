@@ -1,4 +1,4 @@
-# Custom Themes
+# Ownership and conjoint ownership
 
 ::: tip
 Theme components are subject to the same [browser API access restrictions](./using-vue.md#browser-api-access-restrictions).

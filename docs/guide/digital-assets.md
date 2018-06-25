@@ -1,4 +1,4 @@
-# Asset Handling
+# Notirizing digital assets
 
 ## Relative URLs
 

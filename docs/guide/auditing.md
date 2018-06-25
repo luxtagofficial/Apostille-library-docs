@@ -1,4 +1,4 @@
-# Using Vue in Markdown
+# Verification and auditing
 
 ## Browser API Access Restrictions
 
