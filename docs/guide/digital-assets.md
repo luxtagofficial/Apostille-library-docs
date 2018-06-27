@@ -1,3 +1,3 @@
-# Notirizing digital assets
+# Notarizing digital assets
 
 Work in progress
