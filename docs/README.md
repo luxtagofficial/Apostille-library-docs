@@ -14,7 +14,7 @@ features:
   details: Control over notarizing parties with full transparency on the blockchain.
 footer: MIT Licensed | Copyright © 2018-present LuxTag
 ---
-# Use it
+# Use It
 
 ``` bash
 # install
@@ -22,5 +22,5 @@ npm install apostille-library # OR yarn add apostille-library
 ```
 
 ::: warning COMPATIBILITY NOTE
-apostille-library works only with catapult (NIS2).
+Apostille-library works only with catapult (NIS2).
 :::
