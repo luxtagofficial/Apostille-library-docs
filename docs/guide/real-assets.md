@@ -1,3 +1,3 @@
-# Notorizing real life assets
+# Notarizing real life assets
 
 Work in progress
