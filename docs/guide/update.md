@@ -1,3 +1,3 @@
-# Updating a notorized assets
+# Updating a notarized assets
 
 Work in progress
