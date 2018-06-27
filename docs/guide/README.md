@@ -37,7 +37,7 @@ Also, due to the nature of NEM's architecture, few if any other blockchains can 
   - SHA3-512
 
 
-## Todo
+## To do
 
 Apostille-library is still a work in progress. There are a few things that it currently does not support but are planned:
 
