@@ -19,14 +19,13 @@ Also, due to the nature of NEM's architecture, few if any other blockchains can 
 
 ## Features
 
-- supports Catapult
+- Supports Catapult
 - Supports [nem2-sdk](https://nemtech.github.io/guides/overview.html)
-- support public and private Apostille
-- custom sink for public Apostille
-- support of encrypted messages
-- update function for private Apostille
-- ownership transfer for private Apostille
-- support multisig accounts
+- Support public and private Apostille
+- Custom sink for public Apostille
+- Update function
+- Ownership transfer for private Apostille
+- Support multisig accounts
 - Supports different hash functions
   - MD5
   - SHA-1
@@ -41,8 +40,9 @@ Also, due to the nature of NEM's architecture, few if any other blockchains can 
 
 Apostille-library is still a work in progress. There are a few things that it currently does not support but are planned:
 
-- auditing and verification of the Apostilles
-- create .nty file for NanoWallet
+- Auditing and verification of the Apostilles
+- Support of encrypted messages
+- Create .nty file for NanoWallet
 - Supports for SHA3-256 and SHA3-512 hash functions
 
 Contributions are welcome!

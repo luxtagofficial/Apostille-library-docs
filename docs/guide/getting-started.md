@@ -7,6 +7,7 @@ Apostille-library works only with catapult (NIS2).
 ## Installation
 
 ![version](https://img.shields.io/npm/v/apostille-library.svg)
+
 Before installing `apostille-library` we asume that you already have [typescript and nem2-SDK installed](https://nemtech.github.io/getting-started/setup-workstation.html#typescript-javascript).
 
 To install apostille-library you can use `npm` or `yarn`:
@@ -69,7 +70,7 @@ for a 1-n relashionship the initiator should alwayse create aggregate an complet
 
 while the 1-n relasionship alwayse produces an aggregate complete transaction an m-n dependes on how many cosignatory accounts do we have to initilize our initiator.
 
-And as one would expect we can feed as many cosignatory account as we want to the initiator constructor.
+And as one would expect you can feed as many cosignatory account as you want to the initiator constructor.
 
 ```typescript
 import { Account, NetworkType} from 'nem2-sdk';

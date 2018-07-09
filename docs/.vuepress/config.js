@@ -41,6 +41,10 @@ module.exports = {
             text: 'Learn',
             link: '/guide/',
           },
+          {
+            text: 'Apostille Whitepaper',
+            link: 'https://www.nem.io/wp-content/themes/nem/files/ApostilleWhitePaper.pdf',
+          },
           // {
           //   text: 'Config Reference',
           //   link: '/config/'
