@@ -35,7 +35,7 @@ import { Initiator } from 'apostille-library';
 const pk = 'aaaaaaaaaaeeeeeeeeeebbbbbbbbbb5555555555dddddddddd1111111111aaee';
 const myAccount = Account.createFromPrivateKey(pk, NetworkType.MIJIN_TEST);
 
-const initiator = new Initiator(myAccount, NetworkType.MIJIN_TEST);
+const initiator = new Initiator(myAccount);
 ```
 ### Multisgniture Account
 
@@ -57,7 +57,7 @@ const account = Account.createFromPrivateKey(cosignatoryPrivateKey, NetworkType.
 const multisigPublicKey = '7D08373CFFE4154E129E04F0827E5F3D6907587E348757B0F87D2F839BF88246';
 const multAccount = PublicAccount.createFromPublicKey(multisigPublicKey, NetworkType.MIJIN_TEST);
 
-const initiator = new Initiator(account, NetworkType.MIJIN_TEST, multAccount, true);
+const initiator = new Initiator(account, multAccount, true);
 ```
 
 notice the last boolean argument is there to determine if the aggregate transaction from the multisig is complete or bounded this argument is compulsory the moment you provide a multisig account.
@@ -90,6 +90,6 @@ const cosignatory1 = Account.createFromPrivateKey(cosignatory1PrivateKey, Networ
 const cosignatory2PrivateKey = process.env.COSIGNATORY_2_PRIVATE_KEY as string;
 const cosignatory2 = Account.createFromPrivateKey(cosignatory2PrivateKey, NetworkType.MIJIN_TEST);
 
-const initiator = new Initiator(account, NetworkType.MIJIN_TEST, multAccount, false, [cosignatory1, cosignatory2]);
+const initiator = new Initiator(account, multAccount, false, [cosignatory1, cosignatory2]);
 ```
 As we see in the example above we have created other cosignatories accounts that can cosign the transaction the first account and we feed it as an array of accounts to the initiator constructor, notice also that the `isComplete` parameter set to `false` which means the initiator will only create an [aggregate bounded](https://nemtech.github.io/concepts/aggregate-transaction.html#aggregate-bonded) transaction and that more cosignatories will have to eventually sign the transaction once announced to the network.
