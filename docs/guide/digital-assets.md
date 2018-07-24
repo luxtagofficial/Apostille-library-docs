@@ -20,7 +20,7 @@ import { Initiator, PublicApostille, KECCAK256 } from 'apostille-library';
 // refer to the Getting Started section
 
 const fileName = 'top_secret.pdf';
-const myPublicApostille = new PublicApostille(initiator, fileName, NetworkType.MIJIN_TEST);
+const myPublicApostille = new PublicApostille(initiator, fileName);
 
 ```
 At this point we initialized our Public Apostille to notarize the so called `top_secret.pdf` document next step is to get the raw file data.
