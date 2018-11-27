@@ -10,7 +10,10 @@ By assigning ownership, the private key of the HD account is invalidated on the 
 const ownerPublicKey = 'E15CAB00A5A34216A8A29034F950A18DFC6F4F27BCCFBF9779DC6886653B7E56';
 const ownerPublicAccount = PublicAccount.createFromPublicKey(ownerPublicKey);
 
-const ownershipTransaction = apostille.associate([ownerPublicAccount], 1, 1);
+const quorum = 1;
+const minRemoval = 1;
+
+const ownershipTransaction = apostille.associate([ownerPublicAccount], quorum, minRemoval);
 
 // Announce
 apostilleHttp.announce(ownershipTransaction).then((reply) => {
@@ -25,7 +28,7 @@ Note that the first argument for `associate` is an array of owners (eventhough w
 ### M-N Ownership
 
 ::: tip M-N Ownership
-A m-n ownership denotes the asset having a total of `N` owners and requires the signatures of a at least `M` owners to initiate any transactions.
+A M-N (pronounced M of N) ownership denotes the asset requiring the signatures of at least `M` owners to initiate any transactions and has a total of `N` owners.
 :::
 
 It is also possible to assign a M-N ownership. All you need is the public keys of all the owners and the apostille.
