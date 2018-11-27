@@ -59,7 +59,6 @@ function genSidebarConfig (title) {
         'getting-started',
         'digital-assets',
         'real-assets',
-        'update',
         'ownership',
         'transfer',
         'auditing',
