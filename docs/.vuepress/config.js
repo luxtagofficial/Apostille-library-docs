@@ -64,7 +64,8 @@ function genSidebarConfig (title) {
         'transfer',
         'auditing',
         'examples',
-        'advanced'
+        'advanced',
+        'deprecated'
       ]
     }
   ]
