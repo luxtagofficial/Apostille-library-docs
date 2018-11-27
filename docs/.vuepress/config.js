@@ -6,11 +6,6 @@ module.exports = {
       title: 'Apostille Library',
       description: 'A novel & holistic blockchain notarization and timestamping with transferable, updatable, branded, and conjointly owned notarizations.'
     },
-    '/fr/': {
-      lang: 'fr',
-      title: 'Apostille Library',
-      description: 'un system holistique de notorisation sure le blockchain'
-    }
   },
   head: [
     ['link', { rel: 'icon', href: `/logo.png` }],
@@ -26,8 +21,8 @@ module.exports = {
   serviceWorker: true,
   theme: 'vue',
   themeConfig: {
-    repo: 'NEM-Apostille/Apostille-library',
-    docsRepo: 'NEM-Apostille/Apostille-library-docs',
+    repo: 'luxtagofficial/Apostille-library',
+    docsRepo: 'luxtagofficial/Apostille-library-docs',
     editLinks: true,
     docsDir: 'docs',
     locales: {
@@ -38,47 +33,16 @@ module.exports = {
         lastUpdated: 'Last Updated',
         nav: [
           {
-            text: 'Learn',
+            text: 'Guide',
             link: '/guide/',
           },
           {
             text: 'Apostille Whitepaper',
             link: 'https://www.nem.io/wp-content/themes/nem/files/ApostilleWhitePaper.pdf',
           },
-          // {
-          //   text: 'Config Reference',
-          //   link: '/config/'
-          // },
-          // {
-          //   text: 'Default Theme Config',
-          //   link: '/default-theme-config/'
-          // }
         ],
         sidebar: {
           '/guide/': genSidebarConfig('Guide')
-        }
-      },
-      '/zh/': {
-        label: '简体中文',
-        selectText: '选择语言',
-        editLinkText: '在 GitHub 上编辑此页',
-        lastUpdated: '上次更新',
-        nav: [
-          {
-            text: '指南',
-            link: '/zh/guide/',
-          },
-          {
-            text: '配置',
-            link: '/zh/config/'
-          },
-          {
-            text: '默认主题',
-            link: '/zh/default-theme-config/'
-          }
-        ],
-        sidebar: {
-          '/zh/guide/': genSidebarConfig('指南')
         }
       }
     }

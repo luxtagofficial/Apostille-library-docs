@@ -24,7 +24,7 @@
   "homepage": "https://github.com/NEM-Apostille/Apostille-library-docs#readme",
   "dependencies": {
     "push-dir": "^0.4.1",
-    "vuepress": "^0.10.0",
-    "vuepress-theme-vue": "^1.0.3"
+    "vuepress": "0.14.8",
+    "vuepress-theme-vue": "^1.1.0"
   }
 }
