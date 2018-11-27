@@ -1,83 +1,42 @@
-# Ownership and conjoint ownership
+# Ownership
 
-### 1. 1-1 Ownership
- * 1. Init
- * 2. Create without Hash
- * 3. Own
- * 4. Announce and monitor it
- 
- ```JS
- const seed = 'this is cool seed';
-const generatorPK = 'CCFF60EE065DD9EBCC99302D6A065A103D457504CB9108D7C247C6A24AFB0730';
-const generatorAccount = Account.createFromPrivateKey(generatorPK, NetworkType.MIJIN_TEST);
+The benefit of using private apostille standard is the ability to assign ownership to the apostille.
 
-const apostille = Apostille.init(seed, generatorAccount);
+By assigning ownership, the private key of the HD account is invalidated on the blockchain and can no longer be used to initate any transactions.
 
-const asyncApotille = async () => {
-    const initiator = new Initiator(generatorAccount);
-    const firstData = 'this is cool firstData';
+### Assigning a 1-1 Ownership
 
-    await apostille.create(initiator, firstData).catch((err) => {
-        console.log(err);
-    });
+```typescript{4}
+const ownerPublicKey = 'E15CAB00A5A34216A8A29034F950A18DFC6F4F27BCCFBF9779DC6886653B7E56';
+const ownerPublicAccount = PublicAccount.createFromPublicKey(ownerPublicKey);
 
-    apostille.own([generatorAccount.publicAccount], 1, 1);
+const ownershipTransaction = apostille.associate([ownerPublicAccount], 1, 1);
 
-    apostille.announce().then(() => {
-        apostille.monitor().onConfirmed().then((chanell) => {
-            chanell.subscribe(
-                (transaction) => {
-                    console.log({transaction});
-                },
-                (err) => {
-                    console.error(err);
-                },
-            );
-        });
-    });
-};
-
-asyncApotille();
+// Announce
+apostilleHttp.announce(ownershipTransaction).then((reply) => {
+  console.log(reply);
+});
 ```
 
-### 2. Co-joint Ownership
- * 1. Init
- * 2. Create without Hash
- * 3. Own by 2 owner
- * 4. Announce and monitor it
- 
- ```JS
- const seed = 'this is cool seed';
-const generatorPK = 'CCFF60EE065DD9EBCC99302D6A065A103D457504CB9108D7C247C6A24AFB0730';
-const generatorAccount = Account.createFromPrivateKey(generatorPK, NetworkType.MIJIN_TEST);
+::: warning
+Note that the first argument for `associate` is an array of owners (eventhough we only have one).
+:::
 
-const apostille = Apostille.init(seed, generatorAccount);
+### M-N Ownership
 
-const asyncApotille = async () => {
-    const initiator = new Initiator(generatorAccount);
-    const firstData = 'this is cool firstData';
+::: tip M-N Ownership
+A m-n ownership denotes the asset having a total of `N` owners and requires the signatures of a at least `M` owners to initiate any transactions.
+:::
 
-    await apostille.create(initiator, firstData).catch((err) => {
-        console.log(err);
-    });
+It is also possible to assign a M-N ownership. All you need is the public keys of all the owners and the apostille.
 
-    const secondOwnerPublicKey = 'EA01AB95C8B6006D9F77FD23249B4A27AAA130F7E066BA396AC29762FDDECAB6';
-    const secondOwnerPublicAccount = PublicAccount.createFromPublicKey(secondOwnerPublicKey, NetworkType.MIJIN_TEST);
-    apostille.own([generatorAccount.publicAccount, secondOwnerPublicAccount], 2, 1);
+```typescript
+const ownerPublicKeys = [<Array of public keys with length N>]
 
-    apostille.announce().then(() => {
-        apostille.monitor().onConfirmed().then((chanell) => {
-            chanell.subscribe(
-                (transaction) => {
-                    console.log({transaction});
-                },
-                (err) => {
-                    console.error(err);
-                },
-            );
-        });
-    });
-};
+const ownershipTransaction = apostille.associate(ownerPublicKeys, M, M);
 
-asyncApotille();
- ```
+// Announce
+apostilleHttp.announce(ownershipTransaction).then((reply) => {
+  console.log(reply);
+});
+```

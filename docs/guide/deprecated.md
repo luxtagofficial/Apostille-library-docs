@@ -57,7 +57,7 @@ for a 1-n relationship the initiator should always create an aggregate complete 
 
 ##### m-n Multisig
 
-while the 1-n relasionship alwayse produces an aggregate complete transaction an m-n dependes on how many cosignatory accounts do we have to initilize our initiator.
+While the 1-n relationship alwayse produces an aggregate complete transaction an m-n depends on how many cosignatory accounts do we have to initilize our initiator.
 
 And as one would expect you can feed as many cosignatory account as you want to the initiator constructor.
 
