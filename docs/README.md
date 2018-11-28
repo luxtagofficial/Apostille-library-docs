@@ -7,7 +7,7 @@ features:
 - title: Ownership
   details: Digital & real world notorized assets can now be owned or conjointly owned on the blockchain.
 - title: Transferable
-  details: Notorization ownership can be transfered from party to party on the blockchain.
+  details: Notarization ownership can be transfered from party to party on the blockchain.
 - title: Updatable
   details: Notorized assets can receive updates over time.
 - title: Brandable & auditable

@@ -1,19 +1,19 @@
 # Introduction
 
-[NEM](https://nemtech.github.io/getting-started/what-is-nem.html) Apostille is a standard that enables a very versatile blockchain notorization and certification system. It is used for a variety of use cases including the following: 
+[NEM](https://nemtech.github.io/getting-started/what-is-nem.html) Apostille is a standard that enables a very versatile blockchain notarization and certification system. It is used for a variety of use cases including the following:
 
-- proof of existence for real world and digital assets, 
-- certificates of ownership, authenticity and operation for IOT devices, 
+- proof of existence for real world and digital assets,
+- certificates of ownership, authenticity and operation for IOT devices,
 - use the blockchain to show chain-of-custody and/or supply chain projects,
-- providing on-chain certificates, diplomas, land titles, ID where the entire certificate is represented on the blockchain and is transferable and updatable. 
+- providing on-chain certificates, diplomas, land titles, ID where the entire certificate is represented on the blockchain and is transferable and updatable.
 
 and more...
 
 ## How It Works
 
-The key innovation of Apostille is the realization that every item can be given its own private key, and that private key can be used to make a container address ([account](https://nemtech.github.io/concepts/account.html)) to record data about the item, have value sent to and from the item, and taking advantage of NEM's advanced multisig be used to even transfer ownership of the item's container on-chain from person to person.  
+The key innovation of Apostille is the realization that every item can be given its own private key, and that private key can be used to make a container address ([account](https://nemtech.github.io/concepts/account.html)) to record data about the item, have value sent to and from the item, and taking advantage of NEM's advanced multisig be used to even transfer ownership of the item's container on-chain from person to person.
 
-This is an evolutionary leap from other blockchain notarization applications which often just record a fingerprint or hash of a document to show that it exists. 
+This is an evolutionary leap from other blockchain notarization applications which often just record a fingerprint or hash of a document to show that it exists.
 
 Also, due to the nature of NEM's architecture, few if any other blockchains can reproduce the utility unlocked by the NEM Apostille Standard.
 
@@ -21,10 +21,10 @@ Also, due to the nature of NEM's architecture, few if any other blockchains can 
 
 - Supports Catapult
 - Supports [nem2-sdk](https://nemtech.github.io/guides/overview.html)
-- Support public and private Apostille
-- Custom sink for public Apostille
+- Support public and private apostille
+- Custom sink for public apostille
 - Update function
-- Ownership transfer for private Apostille
+- Ownership transfer for private apostille
 - Support multisig accounts
 - Supports different hash functions
   - MD5
@@ -34,13 +34,12 @@ Also, due to the nature of NEM's architecture, few if any other blockchains can 
   - KECCAK-512
   - SHA3-256
   - SHA3-512
-
+- Verification and auditing of the apostille
 
 ## To Do
 
 Apostille-library is still a work in progress. There are a few things that it currently does not support but are planned:
 
-- Auditing and verification of the Apostilles
 - Support of encrypted messages
 - Create .nty file for NanoWallet
 - Supports for SHA3-256 and SHA3-512 hash functions
