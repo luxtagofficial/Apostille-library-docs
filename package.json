@@ -22,7 +22,10 @@
   },
   "homepage": "https://github.com/NEM-Apostille/Apostille-library-docs#readme",
   "dependencies": {
-    "vuepress": "0.14.8",
+    "vuepress": "1.0.3",
     "vuepress-theme-vue": "^1.1.0"
+  },
+  "devDependencies": {
+    "@vuepress/plugin-pwa": "^1.0.0-rc.1"
   }
 }

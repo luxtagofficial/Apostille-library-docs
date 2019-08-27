@@ -1,4 +1,4 @@
-# Updating ownership
+# Transfer ownership
 
 ## Transfer of full ownership
 
@@ -19,17 +19,20 @@ const quorumDelta = 0;
 const minRemovalDelta = 0;
 
 // Initiate a transfer of ownership transaction
-const transferTransaction = apostille..transfer([newOwnerPublicAccount], [myAccount.publicAccount], quorumDelta, minRemovalDelta);
+const transferTransaction = apostille.transfer([newOwnerPublicAccount], [myAccount.publicAccount], quorumDelta, minRemovalDelta);
 
 // I approve this transaction
-const signedTransaction = myAccount.sign(transferTransaction);
+apostilleHttp.addTransaction({
+  initiator: new Initiator(myAccount),
+  transaction: transferTransaction,
+});
 
-apostilleHttp.announce(signedTransaction).then((reply) => {
+apostilleHttp.announceAll().subscribe((reply) => {
   console.log(reply);
 });
 ```
 
-Note that we use `ApostillePublicAccount` not `Apostille` here. THis is because after the first assignment of ownership, we do not need the private key for the private apostille HD account.
+Note that we use `ApostillePublicAccount` not `Apostille` here. This is because after the first assignment of ownership, we do not need the private key for the private apostille HD account.
 
 ::: danger
 `quorum` and `minRemoval` are deltas, not the actual number, unlike in the Ownership example.

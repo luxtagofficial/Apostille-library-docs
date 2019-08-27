@@ -18,8 +18,6 @@ module.exports = {
     ['meta', { name: 'msapplication-TileImage', content: '/icons/msapplication-icon-144x144.png' }],
     ['meta', { name: 'msapplication-TileColor', content: '#000000' }]
   ],
-  serviceWorker: true,
-  theme: 'vue',
   themeConfig: {
     repo: 'luxtagofficial/Apostille-library',
     docsRepo: 'luxtagofficial/Apostille-library-docs',
@@ -46,6 +44,15 @@ module.exports = {
         }
       }
     }
+  },
+  plugins: {
+   '@vuepress/pwa': {
+      serviceWorker: true,
+      updatePopup: {
+        message: "New content is available.",
+        buttonText: "Refresh"
+      }
+    }
   }
 }
 
@@ -58,10 +65,9 @@ function genSidebarConfig (title) {
         '',
         'getting-started',
         'digital-assets',
-        'real-assets',
         'ownership',
         'transfer',
-        'auditing',
+        // 'auditing',
         'examples',
         'advanced',
         'deprecated'

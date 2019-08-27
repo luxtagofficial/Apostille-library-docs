@@ -24,56 +24,89 @@ For the sink address and endpoint url, `apostille-library` provides a list of de
 `MIJIN_TEST` doesn't have any official sink address yet, this is why we define our own sink for this example.
 :::
 
-We need to first initialize the public apostille by calling the `PublicApostille` constructor
+We first create an apostille instance.
 
 ```typescript
-import { NetworkType } from 'nem2-sdk';
-import { ApostilleHttp, PublicApostille, KECCAK256, HistoricalEndpoints, Sinks } from 'apostille-library';
+import { Apostille, ApostilleHttp, HistoricalEndpoints, Initiator, KECCAK256, SHA256 } from 'apostille-library';
+import { Account, Crypto, NetworkType, PublicAccount } from 'nem2-sdk';
 
 // Create our own account
-const privateKey = 'aaaaaaaaaaeeeeeeeeeebbbbbbbbbb5555555555dddddddddd1111111111aaee';
-const networkType = NetworkType.MIJIN_TEST;
-const account = Account.createFromPrivateKey(privateKey, networkType);
+// const privateKey = 'aaaaaaaaaaeeeeeeeeeebbbbbbbbbb5555555555dddddddddd1111111111aaee';
+// Or use a randomly generated account
+const privateKey = Crypto.randomKey().toString('hex');
 
-// Default sink address and endpoint url
-// const sinkAddress = Address.createFromRawAddress(Sinks[networkType]);
-const sinkAddress = Address.createFromRawAddress('SCKPEZ-5ZAPYO-PXVF6U-YLHINF-CLYZHO-YCIO3P-KGVV');
-const endpointUrl = HistoricalEndpoints[networkType];
+const network = NetworkType.MIJIN_TEST;
+const owner = Account.createFromPrivateKey(privateKey, network);
 
-// Start a connection to the endpoint
-const apostilleHttp = new ApostilleHttp(endpointUrl);
+// Demo Public Apostille Sink Address
+const sinkPublicKey = SHA256.hash('PublicApostilleSinkAddress');
+const sinkAddress = PublicAccount.createFromPublicKey(sinkPublicKey, network).address;
 
 // Initialize public apostille
 const fileName = 'top_secret.pdf';
-const myPublicApostille = new PublicApostille(fileName, sinkAddress);
+const myPublicApostille = Apostille.initFromSeed(fileName, owner);
 ```
 At this point we have initialized our public apostille. To notarize our `top_secret.pdf` file we need to sign the raw file data. This will be our proof that the document existed and that it has not been tampered with.
 
 ```typescript
 // Simulate the file content
-const fileContent = CryptoJS.enc.Utf8.parse('Public apostille is awesome !');
+const fileContent = JSON.stringify('Public apostille is awesome !');
 
-const hashedFileContent = myPublicApostille.update(fileContent, new KECCAK256());
+// Add fileHash to apostille account
+const fileHash = new KECCAK256().signedHashing(fileContent, privateKey, network);
+const apostilleTx = myPublicApostille.update(fileHash);
+
+// Designate apostille as Public Apostille
+const sinkTx = myPublicApostille.update(fileHash, sinkAddress);
+
+// Add apostille metadata
+const metadata = {
+  filename: fileName,
+  tags: ['apostille', 'sample', 'LuxTag'],
+  description: 'Apostille file'
+};
+const metadataTx = myPublicApostille.update(JSON.stringify(metadata));
+
 // Still not live yet!
-
-// Sign with my account and announce to the blockchain
-const signedApostille = account.sign(hashedFileContent);
-apostilleHttp.announce(signedApostille).then((reply) => {
-  console.log(reply);
-});
 ```
-Note that the update function accepts a `hashFunction` argument which will be used to create an apostille hash (which is a hash of the document plus a magical byte).
+Now we can prepare the apostille for announcing to the blockchain. We will use the provided `announceAll()` function.
+```typescript
+// Start a connection to the endpoint
+const endpointUrl = HistoricalEndpoints[network];
+const apostilleHttp = new ApostilleHttp(endpointUrl);
+
+// Build apostille transaction
+apostilleHttp.addTransaction({
+  initiator: new Initiator(owner),
+  transaction: apostilleTx,
+});
+apostilleHttp.addTransaction({
+  initiator: new Initiator(myPublicApostille.HDAccount),
+  transaction: sinkTx,
+});
+apostilleHttp.addTransaction({
+  initiator: new Initiator(owner),
+  transaction: metadataTx,
+});
+
+// Announce our new apostille to the world!
+apostilleHttp.announceAll().subscribe(
+  (result) => {
+    console.log(result);
+  },
+);
+```
+
+## Hashing Functions
 
 Currently `apostille-library` supports the following hash functions:
 - MD5
-- SHA-1
+- SHA1
 - SHA256
-- KECCAK-256
-- KECCAK-512
-
-::: tip Note
-Support for SHA3 should land soon in the library.
-:::
+- KECCAK256
+- KECCAK512
+- SHA3_256
+- SHA3_512
 
 ::: warning Compatibility Note
 in [NanoWallet](https://nem.io/downloads/) the SHA3 function is actually KECCAK this is why `apostille-library` will support both KECCAK and SHA3 for backward compatibility reasons. You can read more [here.](https://medium.com/@ConsenSys/are-you-really-using-sha-3-or-old-code-c5df31ad2b0)

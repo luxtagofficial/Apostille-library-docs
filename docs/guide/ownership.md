@@ -13,10 +13,11 @@ const ownerPublicAccount = PublicAccount.createFromPublicKey(ownerPublicKey);
 const quorum = 1;
 const minRemoval = 1;
 
-const ownershipTransaction = apostille.associate([ownerPublicAccount], quorum, minRemoval);
+const multisigTx = apostille.associate([ownerPublicAccount], quorum, minRemoval);
+apostilleHttp.addTransaction(multisigTx);
 
 // Announce
-apostilleHttp.announce(ownershipTransaction).then((reply) => {
+apostilleHttp.announceAll().subscribe((reply) => {
   console.log(reply);
 });
 ```
@@ -37,9 +38,10 @@ It is also possible to assign a M-N ownership. All you need is the public keys o
 const ownerPublicKeys = [<Array of public keys with length N>]
 
 const ownershipTransaction = apostille.associate(ownerPublicKeys, M, M);
+apostilleHttp.addTransaction(ownershipTransaction);
 
 // Announce
-apostilleHttp.announce(ownershipTransaction).then((reply) => {
+apostilleHttp.announceAll().subscribe((reply) => {
   console.log(reply);
 });
 ```

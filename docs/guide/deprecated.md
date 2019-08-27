@@ -4,6 +4,10 @@
 
 ### Initiator
 
+::: warning Note
+As of version `7.0.0` the initiator class has been reinstated. It now supports hardware wallets, allowing for more flexibility in the design of your app.
+:::
+
 Whether it's for creating, updating owning or transfering an ownership of an apostille all of these actions are in fact transactions that will be recorded on the blockchain and every transaction needs an initiator.
 
 The  `Initiator` class in `apostille-library` is used to define the initiator of the transaction.
